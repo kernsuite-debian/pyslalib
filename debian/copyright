@@ -1,0 +1,250 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: pyslalib
+Source: https://pypi.python.org/pypi/pySLALIB
+
+Files:     debian/*
+Copyright: 2018 Gijs Molenaar <gijs@pythonic.nl>
+License:   MIT
+
+
+Files:     PKG-INFO
+           README.txt
+           addet.f
+           afin.f
+           airmas.f
+           altaz.f
+           amp.f
+           ampqk.f
+           aop.f
+           aoppa.f
+           aoppat.f
+           aopqk.f
+           atmdsp.f
+           atms.f
+           atmt.f
+           av2m.f
+           bear.f
+           caf2r.f
+           caldj.f
+           calyd.f
+           cc2s.f
+           cc62s.f
+           cd2tf.f
+           cldj.f
+           clyd.f
+           combn.f
+           cr2af.f
+           cr2tf.f
+           cs2c.f
+           cs2c6.f
+           ctf2d.f
+           ctf2r.f
+           daf2r.f
+           dafin.f
+           dat.f
+           dav2m.f
+           dbear.f
+           dbjin.f
+           dc62s.f
+           dcc2s.f
+           dcmpf.f
+           dcs2c.f
+           dd2tf.f
+           de2h.f
+           deuler.f
+           dfltin.f
+           dh2e.f
+           dimxv.f
+           djcal.f
+           djcl.f
+           dm2av.f
+           dmat.f
+           dmoon.f
+           dmxm.f
+           dmxv.f
+           dpav.f
+           dr2af.f
+           dr2tf.f
+           drange.f
+           dranrm.f
+           ds2c6.f
+           ds2tp.f
+           dsep.f
+           dsepv.f
+           dt.f
+           dtf2d.f
+           dtf2r.f
+           dtp2s.f
+           dtp2v.f
+           dtps2c.f
+           dtpv2c.f
+           dtt.f
+           dv2tp.f
+           dvdv.f
+           dvn.f
+           dvxv.f
+           e2h.f
+           earth.f
+           ecleq.f
+           ecmat.f
+           ecor.f
+           eg50.f
+           el2ue.f
+           epb.f
+           epb2d.f
+           epco.f
+           epj.f
+           epj2d.f
+           epv.f
+           eqecl.f
+           eqeqx.f
+           eqgal.f
+           etrms.f
+           euler.f
+           evp.f
+           fitxy.f
+           fk425.f
+           fk45z.f
+           fk524.f
+           fk52h.f
+           fk54z.f
+           fk5hz.f
+           flotin.f
+           galeq.f
+           galsup.f
+           ge50.f
+           geoc.f
+           get_docstring.py
+           gmst.f
+           gmsta.f
+           gresid.F
+           h2e.f
+           h2fk5.f
+           hfk5z.f
+           idchf.f
+           idchi.f
+           imxv.f
+           intin.f
+           invf.f
+           kbj.f
+           lib/__init__.py
+           lib/docstring_pickle.pkl
+           m2av.f
+           map.f
+           mappa.f
+           mapqk.f
+           mapqkz.f
+           moon.f
+           mxm.f
+           mxv.f
+           nut.f
+           nutc.f
+           nutc80.f
+           oap.f
+           oapqk.f
+           obs.f
+           pa.f
+           pav.f
+           pcd.f
+           pda2h.f
+           pdq2h.f
+           permut.f
+           pertel.f
+           pertue.f
+           planel.f
+           planet.f
+           plante.f
+           plantu.f
+           pm.f
+           polmo.f
+           prebn.f
+           prec.f
+           preces.f
+           precl.f
+           prenut.f
+           pv2el.f
+           pv2ue.f
+           pvobs.f
+           pxy.f
+           random.F
+           range.f
+           ranorm.f
+           rcc.f
+           rdplan.f
+           refco.f
+           refcoq.f
+           refro.f
+           refv.f
+           refz.f
+           rverot.f
+           rvgalc.f
+           rvlg.f
+           rvlsrd.f
+           rvlsrk.f
+           s2tp.f
+           sep.f
+           sepv.f
+           setup.py
+           sla.c
+           sla_config.h
+           slalib.pyf
+           smat.f
+           stdeb.cfg
+           subet.f
+           supgal.f
+           svd.f
+           svdcov.f
+           svdsol.f
+           test/test_slalib.py
+           tp2s.f
+           tp2v.f
+           tps2c.f
+           tpv2c.f
+           ue2el.f
+           ue2pv.f
+           unpcd.f
+           v2tp.f
+           vdv.f
+           veri.f
+           vers.f
+           vn.f
+           vxv.f
+           wait.f
+           xy2xy.f
+           zd.f
+Copyright: __NO_COPYRIGHT_NOR_LICENSE__
+License:  GPL-2.0+
+
+Files:     slalib.h
+Copyright: __NO_COPYRIGHT__ in: slalib.h
+License:   GPL-2.0+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
+ USA.
+ .
+ Last revision:   10 December 2002
+ .
+ The FSF address in the above text is the old one.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files:     slamac.h
+Copyright: P.T.Wallace.
+License:   __UNKNOWN__
+ max(A,B) - larger (most +ve) of two numbers (generic)
+
+#----------------------------------------------------------------------------
+# Files marked as NO_LICENSE_TEXT_FOUND may be covered by the following
+# license/copyright files.
