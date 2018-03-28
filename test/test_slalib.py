@@ -1,8 +1,9 @@
+from __future__ import unicode_literals
+
 from pyslalib import slalib as S
 import numpy as N
 import numpy.testing as T
 import math, unittest
-import xmlrunner
 
 #
 # Note:  This file is based on the sla_test.f file that is used
@@ -217,13 +218,13 @@ class TestSLALIBFunctions(unittest.TestCase):
 
     def testcd2tf(self):
         s, ihmsf = S.sla_cd2tf(4, -0.987654321)
-        T.assert_equal(s, '-', 'sla_cd2tf, s')
+        T.assert_equal(s, b'-', 'sla_cd2tf, s')
         T.assert_equal(ihmsf[0], 23, 'sla_cd2tf, (1)')
         T.assert_equal(ihmsf[1], 42, 'sla_cd2tf, (2)')
         T.assert_equal(ihmsf[2], 13, 'sla_cd2tf, (3)')
         T.assert_almost_equal(ihmsf[3], 3333, -3, 'sla_cd2tf, (4)')
         s, ihmsf = S.sla_dd2tf(4, -0.987654321)
-        T.assert_equal(s, '-', 'sla_dd2tf, s')
+        T.assert_equal(s, b'-', 'sla_dd2tf, s')
         T.assert_equal(ihmsf[0], 23, 'sla_dd2tf, (1)')
         T.assert_equal(ihmsf[1], 42, 'sla_dd2tf, (2)')
         T.assert_equal(ihmsf[2], 13, 'sla_dd2tf, (3)')
@@ -236,13 +237,13 @@ class TestSLALIBFunctions(unittest.TestCase):
 
     def testcr2af(self):
         s, idmsf = S.sla_cr2af(4, 2.345)
-        T.assert_equal(s, '+', 'sla_cr2af, s')
+        T.assert_equal(s, b'+', 'sla_cr2af, s')
         T.assert_equal(idmsf[0], 134, 'sla_cr2af, (1)')
         T.assert_equal(idmsf[1], 21, 'sla_cr2af, (2)')
         T.assert_equal(idmsf[2], 30, 'sla_cr2af, (3)')
         T.assert_almost_equal(idmsf[3], 9706, -3, 'sla_cr2af, (4)')
         s, idmsf = S.sla_dr2af(4, 2.345)
-        T.assert_equal(s, '+', 'sla_dr2af, s')
+        T.assert_equal(s, b'+', 'sla_dr2af, s')
         T.assert_equal(idmsf[0], 134, 'sla_dr2af, (1)')
         T.assert_equal(idmsf[1], 21, 'sla_dr2af, (2)')
         T.assert_equal(idmsf[2], 30, 'sla_dr2af, (3)')
@@ -250,13 +251,13 @@ class TestSLALIBFunctions(unittest.TestCase):
 
     def testcr2tf(self):
         s, ihmsf = S.sla_cr2tf(4, -3.01234)
-        T.assert_equal(s, '-', 'sla_cr2tf, s')
+        T.assert_equal(s, b'-', 'sla_cr2tf, s')
         T.assert_equal(ihmsf[0], 11, 'sla_cr2tf, (1)')
         T.assert_equal(ihmsf[1], 30, 'sla_cr2tf, (2)')
         T.assert_equal(ihmsf[2], 22, 'sla_cr2tf, (3)')
         T.assert_almost_equal(ihmsf[3], 6484, -3, 'sla_cr2tf, (4)')
         s, ihmsf = S.sla_dr2tf(4, -3.01234)
-        T.assert_equal(s, '-', 'sla_dr2tf, s')
+        T.assert_equal(s, b'-', 'sla_dr2tf, s')
         T.assert_equal(ihmsf[0], 11, 'sla_dr2tf, (1)')
         T.assert_equal(ihmsf[1], 30, 'sla_dr2tf, (2)')
         T.assert_equal(ihmsf[2], 22, 'sla_dr2tf, (3)')
@@ -349,7 +350,7 @@ class TestSLALIBFunctions(unittest.TestCase):
                         [1.6578,   1.380522,   1.22548578],
                         [1.380522, 1.22548578, 1.1356276122]])
         dv = N.asarray([2.28625, 1.7128825, 1.429432225])
-        da, dv, dd, j, iw = S.sla_dmat(da, dv, N.empty(3.0))
+        da, dv, dd, j, iw = S.sla_dmat(da, dv, N.empty(3))
         ans = N.asarray([[18.02550629769198, -52.16386644917280607, 34.37875949717850495],
                          [-52.16386644917280607, 168.1778099099805627, -118.0722869694232670],
                          [34.37875949717850495, -118.0722869694232670, 86.50307003740151262]])
@@ -494,13 +495,13 @@ class TestSLALIBFunctions(unittest.TestCase):
                             45,  32.5,    8.6,    -17,
                           15.3,    10,  121.7,   -3.8])
         # The reshaping is necessary due to C/Fortran order
-        xye = N.reshape(xye, (2,8), order='Fortran')
+        xye = N.reshape(xye, (2,8), order='F')
         xym = N.asarray([-23.41,  12.12,  32.03,  15.34,
                           10.93, -23.72,  -3.01, -16.10,
                           44.90, -32.46,   8.55,  17.02,
                           15.31, -10.07, 120.92,   3.81])
         # The reshaping is necessary due to C/Fortran order
-        xym = N.reshape(xym, (2,8), order='Fortran')
+        xym = N.reshape(xym, (2,8), order='F')
         coeffs, j = S.sla_fitxy(4, xye, xym)
         ans1 = N.asarray([-7.938263381515947e-3, 1.004640925187200,
                           3.976948048238268e-4, -2.501031681585021e-2,
@@ -523,7 +524,7 @@ class TestSLALIBFunctions(unittest.TestCase):
                           15.348618307280820, 10.07063070741086835,
                           121.5833272936291482, -3.788442308260240])
         # And another reshaping...
-        ans3 = N.reshape(ans3, (2,8), order='Fortran')
+        ans3 = N.reshape(ans3, (2,8), order='F')
         T.assert_array_almost_equal(xyp, ans3, 12, 'sla_fitxy, xyp')
         T.assert_almost_equal(xrms ,0.1087247110488075, 13, 'sla_pxy, xrms')
         T.assert_almost_equal(yrms, 0.03224481175794666, 13, 'sla_pxy, yrms')
@@ -722,29 +723,29 @@ class TestSLALIBFunctions(unittest.TestCase):
         k = '?'
         e = 1950
         k, j = S.sla_kbj(-1, e)
-        T.assert_equal(k, ' ', 'sla_kbj, jb1')
+        T.assert_equal(k, b' ', 'sla_kbj, jb1')
         T.assert_equal(j, 1, 'sla_kbj, j1')
         k, j = S.sla_kbj(0, e)
-        T.assert_equal(k, 'B', 'sla_kbj, jb2')
+        T.assert_equal(k, b'B', 'sla_kbj, jb2')
         T.assert_equal(j, 0, 'sla_kbj, j2')
         k, j = S.sla_kbj(1, e)
-        T.assert_equal(k, 'B', 'sla_kbj, jb3')
+        T.assert_equal(k, b'B', 'sla_kbj, jb3')
         T.assert_equal(j, 0, 'sla_kbj, j3')
         k, j = S.sla_kbj(2, e)
-        T.assert_equal(k, 'J', 'sla_kbj, jb4')
+        T.assert_equal(k, b'J', 'sla_kbj, jb4')
         T.assert_equal(j, 0, 'sla_kbj, j4')
         k, j = S.sla_kbj(3, e)
-        T.assert_equal(k, ' ', 'sla_kbj, jb5')
+        T.assert_equal(k, b' ', 'sla_kbj, jb5')
         T.assert_equal(j, 1, 'sla_kbj, j5')
         e = 2000
         k, j = S.sla_kbj(0, e)
-        T.assert_equal(k, 'J', 'sla_kbj, jb6')
+        T.assert_equal(k, b'J', 'sla_kbj, jb6')
         T.assert_equal(j, 0, 'sla_kbj, j6')
         k, j = S.sla_kbj(1, e)
-        T.assert_equal(k, 'B', 'sla_kbj, jb7')
+        T.assert_equal(k, b'B', 'sla_kbj, jb7')
         T.assert_equal(j, 0, 'sla_kbj, j7')
         k, j = S.sla_kbj(2, e)
-        T.assert_equal(k, 'J', 'sla_kbj, jb8')
+        T.assert_equal(k, b'J', 'sla_kbj, jb8')
         T.assert_equal(j, 0, 'sla_kbj, j8')
 
     def testmap(self):
@@ -809,31 +810,31 @@ class TestSLALIBFunctions(unittest.TestCase):
         n = 0
         c = 'MMT'
         c, name, w, p, h = S.sla_obs(n, c)
-        T.assert_equal(c.strip(), 'MMT', 'sla_obs, 1/c')
-        T.assert_equal(name.strip(), 'MMT 6.5m, Mt Hopkins', 'sla_obs, 1/name')
+        T.assert_equal(c.strip(), b'MMT', 'sla_obs, 1/c')
+        T.assert_equal(name.strip(), b'MMT 6.5m, Mt Hopkins', 'sla_obs, 1/name')
         T.assert_almost_equal(w, 1.935300584055477, 8, 'sla_obs, 1/w')
         T.assert_almost_equal(p, 0.5530735081550342238, 10, 'sla_obs, 1/p')
         T.assert_almost_equal(h, 2608, 10, 'sla_obs, 1/h')
         n = 61
         c = 20*' '
         c, name, w, p, h = S.sla_obs(n, c)
-        T.assert_equal(c.strip(), 'KECK1', 'sla_obs, 2/c')
-        T.assert_equal(name.strip(), 'Keck 10m Telescope #1', 'sla_obs, 2/name')
+        T.assert_equal(c.strip(), b'KECK1', 'sla_obs, 2/c')
+        T.assert_equal(name.strip(), b'Keck 10m Telescope #1', 'sla_obs, 2/name')
         T.assert_almost_equal(w, 2.713545757918895, 8, 'sla_obs, 2/w')
         T.assert_almost_equal(p, 0.3460280563536619, 8, 'sla_obs, 2/p')
         T.assert_almost_equal(h, 4160, 10, 'sla_obs, 2/h')
         n = 83
         c = 20*' '
         c, name, w, p, h = S.sla_obs(n, c)
-        T.assert_equal(c.strip(), 'MAGELLAN2', 'sla_obs, 3/c')
-        T.assert_equal(name.strip(), 'Magellan 2, 6.5m, Las Campanas', 'sla_obs, 3/name')
+        T.assert_equal(c.strip(), b'MAGELLAN2', 'sla_obs, 3/c')
+        T.assert_equal(name.strip(), b'Magellan 2, 6.5m, Las Campanas', 'sla_obs, 3/name')
         T.assert_almost_equal(w, 1.233819305534497, 8, 'sla_obs, 3/w')
         T.assert_almost_equal(p, -0.506389344359954, 8, 'sla_obs, 3/p')
         T.assert_almost_equal(h, 2408, 10, 'sla_obs, 3/h')
         n = 84
         c = 20*' '
         c, name, w, p, h = S.sla_obs(n, c)
-        T.assert_equal(name.strip(), '?', 'sla_obs, 4/name')
+        T.assert_equal(name.strip(), b'?', 'sla_obs, 4/name')
 
     def testpa(self):
         T.assert_almost_equal(S.sla_pa(-1.567, 1.5123, 0.987),
@@ -924,7 +925,7 @@ class TestSLALIBFunctions(unittest.TestCase):
         T.assert_almost_equal(pv[5], 3.709878268217564005e-8, 19, 'sla_planel, pv(6)')
         T.assert_equal(j, 0, 'sla_planel, j')
         pv, j = S.sla_planet(1e6, 0)
-        T.assert_array_almost_equal(pv, N.zeros(6.0), 15, 'sla_planet, pv 1')
+        T.assert_array_almost_equal(pv, N.zeros(6), 15, 'sla_planet, pv 1')
         T.assert_equal(j, -1, 'sla_planet, j 1')
         pv, j = S.sla_planet(1e6, 10)
         T.assert_equal(j, -1, 'sla_planet, j 2')
@@ -1193,13 +1194,13 @@ class TestSLALIBFunctions(unittest.TestCase):
         a = N.asarray([[2.22,     1.6578,     1.380522],
                        [1.6578,   1.380522,   1.22548578],
                        [1.380522, 1.22548578, 1.1356276122]],
-                      order='Fortran')
+                      order='F')
         v = N.asarray([2.28625, 1.7128825, 1.429432225])
-        a, v, d, j, iw = S.sla_smat(a, v, N.empty(3.0, dtype=N.float32))
+        a, v, d, j, iw = S.sla_smat(a, v, N.empty(3, dtype=N.float32))
         ans = N.asarray([[18.02550629769198, -52.16386644917280607, 34.37875949717850495],
                          [-52.16386644917280607, 168.1778099099805627, -118.0722869694232670],
                          [34.37875949717850495, -118.0722869694232670, 86.50307003740151262]],
-                        order='Fortran')
+                        order='F')
         T.assert_array_almost_equal(a, ans, 2, 'sla_smat, a(3,3)')
         ans = N.asarray([1.002346480763383, 0.03285594016974583489, 0.004760688414885247309])
         T.assert_array_almost_equal(v, ans, 4, 'sla_smat, v(3)')
@@ -1217,7 +1218,7 @@ class TestSLALIBFunctions(unittest.TestCase):
         nc = 7
         m = 5
         n = 4
-        a = N.empty((m, n), order='Fortran')
+        a = N.empty((m, n), order='F')
         b = N.empty(m)
         for ii in range(m):
             val = 0.5 * (ii + 1.0)
@@ -1341,12 +1342,12 @@ class TestSLALIBFunctions(unittest.TestCase):
         # Single precision
         av = N.asarray([-0.123, 0.0987, 0.0654])
         rm1 = S.sla_av2m(av)
-        ans = N.asarray([[0.9930075842721269,  0.05902743090199868, -0.1022335560329612],
-                         [-0.07113807138648245, 0.9903204657727545, -0.1191836812279541],
+        ans = N.asarray([[0.9930075842721269,  0.05902743090199868, -0.1022335560329612], 
+                         [-0.07113807138648245, 0.9903204657727545, -0.1191836812279541], 
                          [0.09420887631983825,  0.1256229973879967,  0.9875948309655174]])
         T.assert_array_almost_equal(rm1, ans, 6, 'sla_av2m')
         rm2 = S.sla_euler('yzy', 2.345, -0.333, 2.222)
-        ans = N.asarray([[-0.1681574770810878, 0.1981362273264315, 0.9656423242187410],
+        ans = N.asarray([[-0.1681574770810878, 0.1981362273264315, 0.9656423242187410], 
                          [-0.2285369373983370, 0.9450659587140423,-0.2337117924378156],
                          [-0.9589024617479674,-0.2599853247796050,-0.1136384607117296]])
         T.assert_array_almost_equal(rm2, ans, 6, 'sla_euler')
@@ -1380,12 +1381,12 @@ class TestSLALIBFunctions(unittest.TestCase):
         # Double precision
         av = N.asarray([-0.123, 0.0987, 0.0654])
         rm1 = S.sla_dav2m(av)
-        ans = N.asarray([[0.9930075842721269,  0.05902743090199868, -0.1022335560329612],
-                         [-0.07113807138648245, 0.9903204657727545, -0.1191836812279541],
+        ans = N.asarray([[0.9930075842721269,  0.05902743090199868, -0.1022335560329612], 
+                         [-0.07113807138648245, 0.9903204657727545, -0.1191836812279541], 
                          [0.09420887631983825,  0.1256229973879967,  0.9875948309655174]])
         T.assert_array_almost_equal(rm1, ans, 12, 'sla_dav2m')
         rm2 = S.sla_deuler('yzy', 2.345, -0.333, 2.222)
-        ans = N.asarray([[-0.1681574770810878, 0.1981362273264315, 0.9656423242187410],
+        ans = N.asarray([[-0.1681574770810878, 0.1981362273264315, 0.9656423242187410], 
                          [-0.2285369373983370, 0.9450659587140423,-0.2337117924378156],
                          [-0.9589024617479674,-0.2599853247796050,-0.1136384607117296]])
         T.assert_array_almost_equal(rm2, ans, 12, 'sla_deuler')
@@ -1422,4 +1423,4 @@ class TestSLALIBFunctions(unittest.TestCase):
                               0.8963914139430839, 12, 'sla_zd')
 
 if __name__ == '__main__':
-    unittest.main(testRunner=xmlrunner.XMLTestRunner(output='test-reports'))
+    unittest.main()
