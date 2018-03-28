@@ -1,16 +1,15 @@
-Description: Link to python
+Description: <short summary of the patch>
 
-
---- pyslalib-1.0.4.orig/setup.py
-+++ pyslalib-1.0.4/setup.py
+--- pyslalib-1.0.4+git20170925.orig/setup.py
++++ pyslalib-1.0.4+git20170925/setup.py
 @@ -14,7 +14,9 @@ ext1 = Extension(name = 'pyslalib.slalib
                   include_dirs = ['.'],
                   sources = ['slalib.pyf']+\
                             glob.glob("*.f")+\
 -                           glob.glob("*.F"))
 +                           glob.glob("*.F"),
-+                 libraries = ['python2.7']
-+                 )
++                extra_link_args = ["-shared"]
++)
  
  if __name__ == "__main__":
      setup(name = 'pySLALIB',

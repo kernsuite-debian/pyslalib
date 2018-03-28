@@ -5,3 +5,4 @@ files
 *.prerm.debhelper
 *.substvars
 python-slalib/
+python3-slalib/
