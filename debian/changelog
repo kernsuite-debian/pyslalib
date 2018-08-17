@@ -1,3 +1,11 @@
+pyslalib (1.0.4+git20170925.fcb0650-1) bionic; urgency=medium
+
+  [ Gijs Molenaar ]
+  * add watch file
+  * New upstream version 1.0.4+git20170925.fcb0650
+
+ -- KERN packaging <packaging@kernsuite.info>  Fri, 17 Aug 2018 14:33:52 +0200
+
 pyslalib (1.0.4+git20170925-1kern1) bionic; urgency=medium
 
   * New upstream version 1.0.4+git20170925
