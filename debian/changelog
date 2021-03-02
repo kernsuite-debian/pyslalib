@@ -1,3 +1,10 @@
+pyslalib (1.0.4+git20170925.fcb0650-1kern1) focal; urgency=medium
+
+  [ Athanaseus Javas Ramaila ]
+  * Build for focal
+
+ -- KERN packaging <packaging@kernsuite.info>  Tue, 02 Mar 2021 10:14:48 +0000
+
 pyslalib (1.0.4+git20170925.fcb0650-1) bionic; urgency=medium
 
   [ Gijs Molenaar ]

@@ -2,36 +2,15 @@ Source: pyslalib
 Section: python
 Priority: optional
 Maintainer: KERN packaging <packaging@kernsuite.info>
-Build-Depends: debhelper (>=9),
+Build-Depends: debhelper (>=11),
  dh-python,
  gfortran,
- python-all,
- python-numpy,
- libpython-dev,
  python3-all,
  python3-numpy,
  libpython3-dev,
-Standards-Version: 3.9.8
+Standards-Version: 4.5.0
 Homepage: https://pypi.python.org/pypi/pySLALIB/
-X-Python-Version: >= 2.6
-
-Package: python-slalib
-Architecture: any
-Depends: ${misc:Depends}, ${python:Depends}, ${shlibs:Depends}
-Description: f2py and numpy based wrappers for SLALIB
- This is archive contains new f2py-generated (and hand-tweaked to
- eliminate unnecessary function/subroutine arguments) wrappers for the
- Fortran version of P.T. Wallace's SLALIB positional astronomy library.
- SLALIB used to be hosted by the STARLINK site, although that service
- has been suspended. The version of SLALIB included here is 2.5-4
- (with several additional tweaks) and is released under the GPL.
- .
- The python wrappers cover every function in SLALIB and a comprehensive
- set of unit tests are available in the test/ directory. The only
- external dependency is numpy (http://numpy.scipy.org). These wrappers
- are not related to the older (and apparently abandoned) pySLALIB that
- was once available on the Web (and which depended on Numeric as
- opposed to numpy).
+X-Python-Version: >= 3.6
 
 Package: python3-slalib
 Architecture: any
@@ -50,3 +29,8 @@ Description: f2py and numpy based wrappers for SLALIB
  are not related to the older (and apparently abandoned) pySLALIB that
  was once available on the Web (and which depended on Numeric as
  opposed to numpy).
+
+Package: slalib
+Architecture: any
+Depends: ${misc:Depends}, python3-slalib
+Description: f2py and numpy based wrappers for SLALIB
