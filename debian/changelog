@@ -1,3 +1,10 @@
+pyslalib (1.0.4+git20170925.fcb0650-1kern2) focal; urgency=medium
+
+  [ Athanaseus Javas Ramaila ]
+  * Update required python and debian standard
+
+ -- KERN packaging <packaging@kernsuite.info>  Mon, 27 Feb 2023 16:13:53 +0000
+
 pyslalib (1.0.4+git20170925.fcb0650-1kern1) focal; urgency=medium
 
   [ Athanaseus Javas Ramaila ]
