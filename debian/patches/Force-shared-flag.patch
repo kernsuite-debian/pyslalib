@@ -1,15 +1,14 @@
-Description: <short summary of the patch>
-
---- pyslalib-1.0.4+git20170925.orig/setup.py
-+++ pyslalib-1.0.4+git20170925/setup.py
-@@ -14,7 +14,9 @@ ext1 = Extension(name = 'pyslalib.slalib
+diff --git a/setup.py b/setup.py
+index 8d0fc75..299e1d3 100644
+--- a/setup.py
++++ b/setup.py
+@@ -16,7 +16,8 @@ ext1 = Extension(name = 'pyslalib.slalib',
                   include_dirs = ['.'],
                   sources = ['slalib.pyf']+\
                             glob.glob("*.f")+\
 -                           glob.glob("*.F"))
 +                           glob.glob("*.F"),
-+                extra_link_args = ["-shared"]
-+)
++                 extra_link_args = ["-shared"])
  
  if __name__ == "__main__":
-     setup(name = 'pySLALIB',
+     numpy_version = numpy.__version__
