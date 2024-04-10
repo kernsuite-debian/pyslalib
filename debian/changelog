@@ -1,3 +1,11 @@
+pyslalib (1.0.7-1kern1) jammy; urgency=medium
+
+  [ Athanaseus Javas Ramaila ]
+  * New upstream version 1.0.7
+  * Build for jammy
+
+ -- KERN packaging <packaging@kernsuite.info>  Wed, 10 Apr 2024 19:10:10 +0000
+
 pyslalib (1.0.4+git20170925.fcb0650-1kern2) focal; urgency=medium
 
   [ Athanaseus Javas Ramaila ]
