@@ -2,15 +2,15 @@ Source: pyslalib
 Section: python
 Priority: optional
 Maintainer: KERN packaging <packaging@kernsuite.info>
-Build-Depends: debhelper (>=11),
+Build-Depends: debhelper-compat (= 13),
  dh-python,
  gfortran,
  python3-all,
  python3-numpy,
  libpython3-dev,
-Standards-Version: 4.6.1
+Standards-Version: 4.6.2.0
 Homepage: https://pypi.python.org/pypi/pySLALIB/
-X-Python-Version: >= 3.8
+X-Python-Version: >= 3.10
 
 Package: python3-slalib
 Architecture: any
